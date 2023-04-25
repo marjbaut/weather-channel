@@ -15,7 +15,7 @@ var searchButton = document.getElementById('search-btn');
 //         var cityName = userInput;
 //     })
 // }
-
+// here I an trying to pull the 5 day forecast
 let a= "";
 searchButton.addEventListener('click', function (event){
     event.preventDefault();
@@ -23,21 +23,32 @@ searchButton.addEventListener('click', function (event){
     var cityInput =  document.getElementById('inputCity');
     var textEntered = cityInput.value;
     console.log(textEntered);
-    fetch('http://api.openweathermap.org/data/2.5/weather?q=' + textEntered +'&APPID=' + APIKey )
-    .then( function(response){
-        return response.json();
+    fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + textEntered +'&callback=test&appid=' + APIKey )
+    .then( function(test){
+        return test.json();
     })
     .then(function(data){
         console.log(data);
-        console.log(data.name);
-        console.log(data.sys.country);
-        let tempF= ((data.main.temp - 273.15) * 9/5 + 32).toFixed(2)
-        a=`<h1> </h1>
-        <h1> ${data.name}, ${data.sys.country} </h1>
-        <h3>${data.weather[0].description}</h3>
-        <h4>${tempF} °F</h4>
-        <h3>line</h3>`;
-        document.getElementById('cityTempMain').innerHTML= a;
+// this work for the first part of the challenge
+    // fetch('http://api.openweathermap.org/data/2.5/weather?q=' + textEntered +'&appid=' + APIKey )
+    // .then( function(response){
+    //     return response.json();
+    // })
+    // .then(function(data){
+    //     console.log(data);
+        // console.log(data.name);
+        // console.log(data.sys.country);
+        // currentDate = dayjs().format("MMM DD YYYY")
+        // let tempF= ((data.main.temp - 273.15) * 9/5 + 32).toFixed(1)
+        // let tempC= ((data.main.temp - 273.15)).toFixed(1)
+        // a=`<h4> ${currentDate}</h4>
+        // <h1> ${data.name}, ${data.sys.country} </h1>
+        // <h3>${data.weather[0].description}</h3>
+        // <h4> Temperature: ${tempF} °F  ||   ${tempC} °C  </h4>
+        // <h4> Humidity: ${data.main.humidity} %</h4>
+        // <h4> Wind: ${data.wind.speed} MPH</h4>`
+        // ;
+        // document.getElementById('cityTempMain').innerHTML= a;
 
     })
 })
