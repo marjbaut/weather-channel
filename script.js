@@ -1,5 +1,5 @@
-var APIKey = "ca6c874e976871790d30e8630c5f2a86";
-var textAreaEl =  document.getElementById('inputCity');
+var APIKey = "31cd83642966fb102e9e053f0aff908c";
+
 var userFormEl = document.querySelector('.form-label');
 
 var searchButton = document.getElementById('search-btn');
@@ -16,33 +16,45 @@ var searchButton = document.getElementById('search-btn');
 //     })
 // }
 
-
+let a= "";
 searchButton.addEventListener('click', function (event){
     event.preventDefault();
     // var userInput= textAreaEl.value;
-    // cityInput(userInput);
-    fetch('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=31cd83642966fb102e9e053f0aff908c' )
+    var cityInput =  document.getElementById('inputCity');
+    var textEntered = cityInput.value;
+    console.log(textEntered);
+    fetch('http://api.openweathermap.org/data/2.5/weather?q=' + textEntered +'&APPID=' + APIKey )
     .then( function(response){
         return response.json();
     })
     .then(function(data){
         console.log(data);
+        console.log(data.name);
+        console.log(data.sys.country);
+        let tempF= ((data.main.temp - 273.15) * 9/5 + 32).toFixed(2)
+        a=`<h1> </h1>
+        <h1> ${data.name}, ${data.sys.country} </h1>
+        <h3>${data.weather[0].description}</h3>
+        <h4>${tempF} °F</h4>
+        <h3>line</h3>`;
+        document.getElementById('cityTempMain').innerHTML= a;
+
     })
 })
 
 //----THIS CODE WORKS, have to find a way to enter the country code-----
-searchButton.addEventListener('click', function (event){
-    event.preventDefault();
-    // var userInput= textAreaEl.value;
-    // cityInput(userInput);
-    fetch('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=31cd83642966fb102e9e053f0aff908c' )
-    .then( function(response){
-        return response.json();
-    })
-    .then(function(data){
-        console.log(data);
-    })
-})
+// searchButton.addEventListener('click', function (event){
+//     event.preventDefault();
+//     // var userInput= textAreaEl.value;
+//     // cityInput(userInput);
+//     fetch('http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=31cd83642966fb102e9e053f0aff908c' )
+//     .then( function(response){
+//         return response.json();
+//     })
+//     .then(function(data){
+//         console.log(data);
+//     })
+// })
 
 
 // // ---------- first 
