@@ -1,0 +1,25 @@
+#mainColor{ 
+    height: max-content;
+    background: rgb(252, 232, 235);
+;}
+header{
+    background: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+    font-family: 'Pacifico', cursive;
+    font-size: 80px;
+    padding: 10px;
+}
+header div{
+    color: rgb(202, 132, 144) ;
+}
+.cont{
+    background-color: #fff1eb;
+    /* background-color:  linear-gradient(to top, rgb(252, 232, 235) 0%,#fff1eb 100%); */
+}
+.searchCSS {
+    font-family: 'Bungee Inline', cursive;
+
+
+}
+#resultbox{
+    font-family: 'Staatliches', cursive;
+}
